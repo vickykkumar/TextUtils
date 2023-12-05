@@ -7,9 +7,8 @@ import About from './components/About';
 import React from "react";
 import {
   BrowserRouter as Router,
-  Switch,
   Route,
-  Link
+  Routes
 } from "react-router-dom";
 
 function App() {
@@ -43,10 +42,14 @@ function App() {
   
   return (
     <>
+    <Router>
       <Navigation title="TextUtils" mode={mode} toggleMode={toggleMode} />
       <Alert alert={alert}/>
-      <TextForm mode={mode} showAlert={showAlert}/>
-      {/* <About/> */}
+      <Routes>
+          <Route exact path="/about" element={<About />} />
+          <Route exact path="/" element={<TextForm mode={mode} showAlert={showAlert}/>} />
+        </Routes>
+        </Router>
     </>
   );
 }
